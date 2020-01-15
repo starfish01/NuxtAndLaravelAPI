@@ -1,17 +1,20 @@
 <template>
   <div>
     <h2>Making API request - the Vue way</h2>
-    <div class="container">
-      <ul>
-        <li v-for="post in posts" :key="post.id">{{ post.title}}</li>
-      </ul>
+    <div class="container row">
+      <Card v-for="post in posts" :key="post.id" :post="post" class="ml-auto mr-auto" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Card from "@/components/card";
+
 export default {
+  components: {
+    Card
+  },
   data() {
     return {
       posts: []
@@ -20,14 +23,18 @@ export default {
   asyncData(context) {
     // nuxt this is used to do server side redering and front end fetching
     // console.log(context);
-    return axios.get("https://jsonplaceholder.typicode.com/todos")
+    return axios
+      .get("https://jsonplaceholder.typicode.com/posts")
       .then(response => {
         // console.log({posts: response.data})
-        return {posts: response.data}
+        return { posts: response.data };
       })
       .catch(error => {
         console.log(error);
       });
+  },
+  head: {
+    title: "List of posts"
   }
 };
 
@@ -51,3 +58,4 @@ export default {
 //   }
 // };
 </script>
+

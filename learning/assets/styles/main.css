@@ -4,10 +4,10 @@ body {
 }
 .jumbotron {
     border-radius: 0px;
-    background-image: url('https://cdn.pixabay.com/photo/2020/01/10/10/47/wildfire-4755030_960_720.jpg');
+    background-image: url('/bg.jpg');
     height: 300px;
     background-size: cover;
-    background-position: center; 
+    background-position: bottom; 
     padding: 0;
     margin: 0;
 }

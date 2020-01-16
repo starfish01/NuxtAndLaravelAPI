@@ -2,13 +2,21 @@
   <div class="container">
     <div>
       <h1 class="title">Test</h1>
+
+      <no-ssr>
+        <v-select v-model="selected" placeholder="Select Category" :options="['foo','bar']"></v-select>
+      </no-ssr>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  components: {}
+  data() {
+    return {
+      selected: ""
+    };
+  }
 };
 </script>
 

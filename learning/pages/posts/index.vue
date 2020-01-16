@@ -20,18 +20,13 @@ export default {
       posts: []
     };
   },
-  asyncData(context) {
+  async asyncData({ store }) {
     // nuxt this is used to do server side redering and front end fetching
     // console.log(context);
-    return axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then(response => {
-        // console.log({posts: response.data})
-        return { posts: response.data };
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    let { data } = await axios.get(
+      "https://jsonplaceholder.typicode.com/posts"
+    );
+    store.dispatch("setPosts", data);
   },
   head: {
     title: "List of posts"
